@@ -1,1 +1,56 @@
-GET http://localhost:5005
+POST http://localhost:5050/api/auth/register
+Content-Type: application/json
+
+{
+  "username": "thumai",
+  "password": "201161"
+}
+
+###
+
+POST http://localhost:5050/api/auth/login
+Content-Type: application/json
+
+{
+  "username": "thumai",
+  "password": "201161"
+}
+
+###
+
+POST http://localhost:5050/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmIxNDlmZTZkYTg2ZTE1Y2I4NDg1NWEiLCJpYXQiOjE2NTU3ODU5ODJ9.eWML0kV7xPcL3Zw5xJO7oOuEU-FBV7nP4MjKZaBcN24
+
+{
+  "title": "Mai second post",
+  "description": "second test post",
+  "url": "shopee.com",
+  "status": "LEARNING"
+}
+
+###
+
+GET http://localhost:5050/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmIxNDlmZTZkYTg2ZTE1Y2I4NDg1NWEiLCJpYXQiOjE2NTU3ODY3MDJ9.RJIQwQ7CBY828RW3wnKsJSPS1paVl9l-SZt9WqtQoUk
+
+###
+
+PUT http://localhost:5050/api/posts/62b14a2e6da86e15cb84855c
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmIxNDlmZTZkYTg2ZTE1Y2I4NDg1NWEiLCJpYXQiOjE2NTU3ODY3MDJ9.RJIQwQ7CBY828RW3wnKsJSPS1paVl9l-SZt9WqtQoUk
+
+{
+  "title": "Mai first post",
+  "description": "first test post",
+  "url": "abcd.com",
+  "status": "TO LEARN"
+}
+
+###
+
+DELETE http://localhost:5050/api/posts/62b14cbd2bac0e33e474f770
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2MmIxNDlmZTZkYTg2ZTE1Y2I4NDg1NWEiLCJpYXQiOjE2NTU3ODY3MDJ9.RJIQwQ7CBY828RW3wnKsJSPS1paVl9l-SZt9WqtQoUk
+

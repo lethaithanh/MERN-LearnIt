@@ -6,15 +6,19 @@ const app = express();
 const dotenv = require('dotenv');
 dotenv.config();
 
+// Router
+const authRouter = require('./routes/auth');
+const postRouter = require('./routes/post');
+
 // MongoDB
 const mongoose = require('mongoose');
 const connectDB = async () => {
   try {
     await mongoose.connect(process.env.MONGODB_URI, {
-      //useCreateIndex: true,
+      //useCreateIndex: true, (not supported)
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      //useFindAndModify: false,
+      //useFindAndModify: false, (not supported)
     });
     console.log('MongoDB connected');
   } catch (error) {
@@ -24,9 +28,13 @@ const connectDB = async () => {
 };
 connectDB();
 
+// Express JSON
+app.use(express.json());
+
 // Routes
-app.get('/', (req, res) => res.send('Hello, World !!!'));
+app.use('/api/auth', authRouter);
+app.use('/api/posts', postRouter);
 
 // Port for server.
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 5050;
 app.listen(port, console.log(`Server started on port ${port}`));
